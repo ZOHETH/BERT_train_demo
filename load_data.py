@@ -78,7 +78,6 @@ class BertEncoding:
         df = pd.read_csv('dataset/data.csv')
         df = df.loc[df['大类'] == '拒绝购买']
         df = df.loc[df['小类'].isin(('其他', '已经有很多保险'))]
-        df = df[:100]
         new_npy = self.load_data(df, ('大类', '小类'), '问', save_data=False)
         old_npy = np.load(old_npy_path)
         new_npy = np.vstack((old_npy, new_npy))
