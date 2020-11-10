@@ -76,8 +76,8 @@ class BertEncoding:
 
     def load_new_data(self, tag_names: tuple = None, old_npy_path=TRAIN_DATA_PATH):
         df = pd.read_csv('dataset/data.csv')
-        df = df.loc[df['大类'] == '拒绝购买']
-        df = df.loc[df['小类'].isin(('其他', '已经有很多保险'))]
+        # df = df.loc[df['大类'] == '拒绝购买']
+        df = df.loc[df['小类']=='无意义']
         new_npy = self.load_data(df, ('大类', '小类'), '问', save_data=False)
         old_npy = np.load(old_npy_path)
         new_npy = np.vstack((old_npy, new_npy))
